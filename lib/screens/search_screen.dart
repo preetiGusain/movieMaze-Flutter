@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as html_parser;
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -30,7 +31,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 final movie = searchResults[index]['show'];
                 final name = movie['name'] ?? 'No Title';
                 final imageUrl = movie['image']?['medium'] ?? 'No Image';
-                final summary = movie['summary'] ?? 'No summary available';
+                final summaryHtml = movie['summary'] ?? 'No summary available';
+                final summary = stripHtmlTags(summaryHtml);
 
                 return ListTile(
                   contentPadding: const EdgeInsets.symmetric(
@@ -98,4 +100,9 @@ class _SearchScreenState extends State<SearchScreen> {
       searchResults = json;
     });
   }
+}
+
+String stripHtmlTags(String htmlString) {
+  final document = html_parser.parse(htmlString);
+  return document.body?.text ?? '';
 }
