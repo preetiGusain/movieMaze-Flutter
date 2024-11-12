@@ -50,7 +50,7 @@ The search results will be displayed on a new screen.
 ### Details Screen
 Once you select a movie or TV show, the Details Screen provides detailed information, including a larger image and the full description.
 
-![Detail Page](setailsPage.png)
+![Detail Page](detailsPage.png)
 
 ### Project Structure
 
