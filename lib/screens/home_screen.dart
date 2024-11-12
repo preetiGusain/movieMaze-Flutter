@@ -31,12 +31,19 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index]['show'];
-                final name = movie != null && movie['name'] != null ? movie['name'] : 'No Title';
-                final imageUrl = movie != null && movie['image'] != null ? movie['image']['medium'] : 'No Image';
-                
-                
+                final name = movie != null && movie['name'] != null
+                    ? movie['name']
+                    : 'No Title';
+                final imageUrl = movie != null && movie['image'] != null
+                    ? movie['image']['medium']
+                    : 'No Image';
+                final summary = movie != null && movie['summary'] != null
+                    ? movie['summary']
+                    : 'No summary available';
+
                 return ListTile(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
                   leading: Container(
                     width: 60.0,
                     height: 90.0,
@@ -49,11 +56,35 @@ class _HomeScreenState extends State<HomeScreen> {
                           : null,
                       color: Colors.grey[300],
                     ),
-                    child: imageUrl == null 
+                    child: imageUrl == null
                         ? const Icon(Icons.movie, color: Colors.white)
                         : null,
                   ),
-                  title: Text(name),
+                  title: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              name,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 4.0),
+                            Text(
+                              summary,
+                              style: TextStyle(
+                                  color: Colors.grey[600], fontSize: 12.0),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
