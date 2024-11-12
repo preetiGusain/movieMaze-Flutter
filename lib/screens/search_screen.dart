@@ -15,4 +15,15 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return const Placeholder();
   }
+
+  void fetchSearchResults(String searchTerm) async {
+    final url = 'https://api.tvmaze.com/search/shows?q={Uri.encodeComponent(searchTerm)}';
+    final uri = Uri.parse(url);
+    final response = await http.get(uri);
+    final json = jsonDecode(body);
+
+    setState(() {
+      searchResults = json;
+    });
+  }
 }
