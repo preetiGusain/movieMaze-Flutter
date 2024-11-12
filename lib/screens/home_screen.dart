@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:moviemaze_flutter/movie_search_delegate.dart';
+import 'package:html/parser.dart' as html_parser;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -53,9 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 final imageUrl = movie != null && movie['image'] != null
                     ? movie['image']['medium']
                     : 'No Image';
-                final summary = movie != null && movie['summary'] != null
+                final summaryHtml = movie != null && movie['summary'] != null
                     ? movie['summary']
                     : 'No summary available';
+                final summary = stripHtmlTags(summaryHtml);
 
                 return ListTile(
                   contentPadding: const EdgeInsets.symmetric(
@@ -124,6 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       movies = json;
     });
-    print('FetchMovies completed');
+  }
+
+   String stripHtmlTags(String htmlString) {
+    final document = html_parser.parse(htmlString);
+    return document.body?.text ?? '';
   }
 }

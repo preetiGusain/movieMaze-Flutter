@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart' as html_parser;
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key});
@@ -15,9 +16,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     //Extracting details from movie object
     final name = movie?['name'] ?? 'No Title';
-    final summary = movie?['summary'] ?? 'No summary available';
+    final summaryHtml = movie?['summary'] ?? 'No summary available';
     final imageUrl =
         movie?['image']?['original'] ?? 'https://via.placeholder.com/150';
+    final summary = stripHtmlTags(summaryHtml);
 
     return Scaffold(
       appBar: AppBar(
@@ -49,4 +51,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
     );
   }
+}
+
+String stripHtmlTags(String htmlString) {
+  final document = html_parser.parse(htmlString);
+  return document.body?.text ?? '';
 }
