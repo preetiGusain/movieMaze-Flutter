@@ -39,13 +39,18 @@ flutter run
 The Home Screen will display a list of TV shows fetched from the TVMaze API. Each item in the list shows the name, a short description, and an image (if available).
 Clicking on any show’s name will take the user to the Details Screen for more information.
 
+![Home Page](homepage.png)
+
 ### Search Screen
 To search for a specific TV show or movie, tap the search icon in the top right corner of the Home Screen. This opens the search bar where you can enter the name of the movie or show you're looking for.
 The search results will be displayed on a new screen.
 
+![Search Page](searchPage.png)
+
 ### Details Screen
 Once you select a movie or TV show, the Details Screen provides detailed information, including a larger image and the full description.
 
+![Detail Page](setailsPage.png)
 
 ### Project Structure
 
