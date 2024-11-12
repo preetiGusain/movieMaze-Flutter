@@ -60,30 +60,35 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? const Icon(Icons.movie, color: Colors.white)
                         : null,
                   ),
-                  title: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              name,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 4.0),
-                            Text(
-                              summary,
-                              style: TextStyle(
-                                  color: Colors.grey[600], fontSize: 12.0),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                  title: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/details', arguments: name);
+                    },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 4.0),
+                              Text(
+                                summary,
+                                style: TextStyle(
+                                    color: Colors.grey[600], fontSize: 12.0),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

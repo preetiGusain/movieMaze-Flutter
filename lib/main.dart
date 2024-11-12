@@ -1,5 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:moviemaze_flutter/screens/details_screen.dart';
 import 'package:moviemaze_flutter/screens/home_screen.dart';
 
 void main() {
@@ -7,12 +7,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       home: HomeScreen(),
+      routes: {
+        '/details': (context) => const DetailsScreen(),
+        //'/search': (context) => const SearchScreen(),
+      },
     );
   }
 }

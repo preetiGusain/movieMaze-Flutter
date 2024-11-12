@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
-class DetailsScreen extends StatelessWidget{
-  final int movieId;
+class DetailsScreen extends StatefulWidget {
+  const DetailsScreen({super.key});
 
-  DetailsScreen({required this.movieId});
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
 
+class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Movie Details')),
-      body: Center(
-        child: Text('Details for movie ID: $movieId'),
+      appBar: AppBar(
+        title: const Text('Movie Details'),
+      ),
+      body:Center(
+        child: Text('Hi')
       ),
     );
   }
