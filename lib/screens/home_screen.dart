@@ -11,12 +11,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<dynamic> movies = [];
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     fetchMovies();
-    print('FetchMovies called');
   }
 
   @override
@@ -24,6 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MovieMaze'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () async {
+              final query = await showSearch<String>(
+                context: context,
+                delegate: MovieSearchDelegate(),
+              );
+              if (query != null && query.isNotEmpty) {
+                //Navigate to searchScreen
+                Navigator.pushNamed(context, '/search', arguments: query);
+              }
+            },
+          ),
+        ],
       ),
       body: movies.isEmpty
           ? const Center(child: CircularProgressIndicator())
