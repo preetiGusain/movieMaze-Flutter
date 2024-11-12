@@ -62,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   title: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/details', arguments: name);
+                      // Passing the entire movie object to DetailsScreen
+                      Navigator.pushNamed(context, '/details',
+                          arguments: movie);
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
