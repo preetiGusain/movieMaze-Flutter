@@ -22,12 +22,13 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.1
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+
   flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "Action.png"
