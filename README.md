@@ -1,6 +1,6 @@
 # MovieMaze Flutter App
 
-![MovieMaze](https://github.com/preetiGusain/movieMaze-Flutter/blob/main/Moviemaze.gif)
+![MovieMaze](<img src="https://github.com/preetiGusain/movieMaze-Flutter/blob/main/Moviemaze.gif" width="40" height"60">)
 
 MovieMaze is a [Flutter](https://flutter.dev/) application that allows users to browse and search for movies and TV shows using the [TVMaze API](https://api.tvmaze.com/search/shows?q=all). It provides a simple and user-friendly interface to display movie details, summaries, and images. The app features a home screen with a list of popular TV shows, a search feature to find specific shows, and a detailed screen for each movie/show.
 
