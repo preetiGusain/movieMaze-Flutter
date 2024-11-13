@@ -3,6 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:moviemaze_flutter/screens/details_screen.dart';
 import 'package:moviemaze_flutter/screens/home_screen.dart';
 import 'package:moviemaze_flutter/screens/search_screen.dart';
+import 'package:moviemaze_flutter/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home: SplashScreen(),
       routes: {
         '/details': (context) => const DetailsScreen(),
         '/search': (context) => const SearchScreen(),
