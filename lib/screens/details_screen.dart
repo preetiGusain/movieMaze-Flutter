@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart' as html_parser;
+import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key});
@@ -17,9 +18,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
     //Extracting details from movie object
     final name = movie?['name'] ?? 'No Title';
     final summaryHtml = movie?['summary'] ?? 'No summary available';
-    final imageUrl =
-        movie?['image']?['original'] ?? 'https://via.placeholder.com/150';
+    final imageUrl = movie['image']?['original'] ??
+        movie['image']?['medium'] ??
+        'https://via.placeholder.com/150';
     final summary = stripHtmlTags(summaryHtml);
+    final language = movie?['language'] ?? 'Unknown';
+    final genres = (movie?['genres'] as List<dynamic>?)?.join(', ') ??
+        'Genre not available';
+    final status = movie?['status'] ?? 'Not available';
 
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +39,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(imageUrl),
+                    Image.network(
+                      imageUrl,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.network('https://via.placeholder.com/150');
+                      },
+                    ),
                     const SizedBox(height: 16.0),
                     Text(
                       name,
@@ -45,6 +56,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       summary,
                       style: TextStyle(color: Colors.grey[600]),
                     ),
+                    const SizedBox(height: 8.0),
+                    Text("Status: $status"),
+                    Text("Language: $language"),
+                    Text("Genres: $genres"),
                   ],
                 ),
               ),
