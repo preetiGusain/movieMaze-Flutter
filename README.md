@@ -1,14 +1,18 @@
 # MovieMaze Flutter App
 
 
-MovieMaze is a Flutter application that allows users to browse and search for movies and TV shows using the TVMaze API. It provides a simple and user-friendly interface to display movie details, summaries, and images. The app features a home screen with a list of popular TV shows, a search feature to find specific shows, and a detailed screen for each movie/show.
+
+MovieMaze is a [Flutter](https://flutter.dev/) application that allows users to browse and search for movies and TV shows using the [TVMaze API](https://api.tvmaze.com/search/shows?q=all). It provides a simple and user-friendly interface to display movie details, summaries, and images. The app features a home screen with a list of popular TV shows, a search feature to find specific shows, and a detailed screen for each movie/show.
+
 
 ## Features
 
-
 **Home Screen**: Displays a list of popular TV shows with images and brief summaries.
+
 **Search Functionality**: Allows users to search for TV shows and movies by name.
+
 **Details Screen**: Provides detailed information about a selected TV show or movie, including its full summary and image.
+
 **Responsive UI**: The app adapts well to various screen sizes, offering an intuitive design.
 
 ## Installation
@@ -18,19 +22,26 @@ To run the MovieMaze app on your local machine, follow these steps:
 
 1. **Clone the repository**:
 
-git clone (https://github.com/yourusername/moviemaze-flutter.git)
-
+```
+git clone https://github.com/yourusername/moviemaze-flutter.git
+```
 2. **Navigate to the project folder**:
 
+```
 cd moviemaze-flutter
+```
 
 3. **Install the dependencies**: If you're using Flutter, ensure you have Flutter SDK installed. Then run:
 
+```
 flutter pub get
+```
 
 4. **Run the app**: Ensure you have an emulator running or a device connected, and then:
 
+```
 flutter run
+```
 
 ## Usage
 
@@ -83,7 +94,9 @@ This file handles the custom search logic for the app, allowing users to search 
 
 
 **http**: For making HTTP requests to the TVMaze API to fetch movie data.
+
 **flutter/material.dart**: For the UI components and widgets of the app.
+
 **html/parser.dart**: For parsing HTML and stripping out unnecessary tags from the TVMaze API response.
 
 
